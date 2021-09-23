@@ -4,4 +4,5 @@ function testFn() {
   console.log('fdfd');
   console.log('dfdf');
   console.log('t4est');
+  console.log('test999');
 }

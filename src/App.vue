@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    vue app of mine11
+    vue app of mine112
     <comp />
   </div>
 </template>

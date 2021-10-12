@@ -5,8 +5,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
+  context: path.resolve(),
   mode: 'development',
-  entry: ['./src/main.js'],
+  entry: ['./src/main.js', './src/my.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'

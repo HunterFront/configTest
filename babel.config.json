@@ -8,8 +8,12 @@
           "ie": "11"
         },
         "useBuiltIns": "usage",
-        "corejs": "2.6.5"
+        "corejs": "3.6.5"
       }
     ]
+  ],
+  "plugins": [
+    ["@babel/proposal-decorators", { "legacy": true }],
+    ["@babel/proposal-class-properties", { "loose": true }]
   ]
 }

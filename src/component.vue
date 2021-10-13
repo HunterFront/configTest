@@ -6,9 +6,14 @@ import axios from 'axios';
 export default {
   name: 'comp',
   created() {
+    const a = 1;
+    console.log('aaaaa');
+    console.log(a);
     this.testComp();
     this.fetch();
     this.fetchPost();
+    console.log('promise11')
+    console.log(new Promise(() => {}));
   },
   methods: {
     testComp() {

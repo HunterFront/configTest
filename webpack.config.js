@@ -54,6 +54,11 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: ['ts-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
       }
     ]
   },
@@ -62,5 +67,6 @@ module.exports = {
     // new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin()
-  ]
+  ],
+  target: ['web', 'es5']
 };

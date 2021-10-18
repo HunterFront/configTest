@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   context: path.resolve(),
@@ -66,7 +67,10 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     // new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ESLintPlugin({
+      extensions: ['js', 'vue', 'ts']
+    })
   ],
   target: ['web', 'es5']
 };

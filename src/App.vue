@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import comp from './component.vue';
+import comp from './component.vue'
 import comp2 from './comp2.ts';
 export default {
   name: 'App',
@@ -16,4 +16,5 @@ export default {
     comp2
   }
 };
+console.log('bbbb app')
 </script>

@@ -1,1 +1,2 @@
-console.log('aa');
+const aa = require('./a');
+aa();

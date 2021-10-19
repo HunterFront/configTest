@@ -7,7 +7,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   context: path.resolve(),
-  mode: 'development',
+  mode: 'production',
   entry: ['./src/main.js', './src/my.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -67,10 +67,12 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     // new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin(),
-    new ESLintPlugin({
-      extensions: ['js', 'vue', 'ts']
-    })
+    new VueLoaderPlugin()
+    // new ESLintPlugin({
+    //   extensions: ['js', 'vue', 'ts']
+    // })
   ],
-  target: ['web', 'es5']
+  target: ['web', 'es5'],
+
+  devtool: false
 };

@@ -37,6 +37,7 @@
     "raw-loader": "^4.0.2",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.3.0",
+    "thread-loader": "^3.0.4",
     "ts-loader": "^9.2.6",
     "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.14",

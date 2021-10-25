@@ -3,6 +3,7 @@
 </template>
 <script>
 import axios from 'axios';
+import Promise from 'core-js/features/promise';
 export default {
   name: 'comp',
   created() {
@@ -12,7 +13,7 @@ export default {
     this.testComp();
     this.fetch();
     this.fetchPost();
-    console.log('promise11')
+    console.log('promise11');
     console.log(new Promise(() => {}));
   },
   methods: {

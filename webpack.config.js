@@ -8,6 +8,7 @@ const HappyPack = require('happypack');
 const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 module.exports = {
   context: path.resolve(),
@@ -16,6 +17,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
+  },
+  watchOptions: {
+    // 不监听的 node_modules 目录下的文件
+    ignored: /node_modules/
   },
   devServer: {
     static: {
@@ -76,6 +81,13 @@ module.exports = {
     ]
   },
   plugins: [
+    new DefinePlugin({
+      // 定义 NODE_ENV 环境变量为 production
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      },
+      testDefine: JSON.stringify({ a: '1111' })
+    }),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new AddAssetHtmlPlugin([
       // Glob to match all of the dll file
@@ -139,6 +151,5 @@ module.exports = {
     })
   ],
   target: ['web', 'es5'],
-
   devtool: false
 };

@@ -1,5 +1,7 @@
 <template>
-  <div class="comp">my component haha change fdf</div>
+  <div class="comp">
+    my component haha change fdf dfdfdfdf gfgfgf ss wu comp
+  </div>
 </template>
 <script>
 import axios from 'axios';
@@ -50,6 +52,6 @@ export default {
 
 <style lang="scss" scoped>
 .comp {
-  color: yellow;
+  color: blue;
 }
 </style>

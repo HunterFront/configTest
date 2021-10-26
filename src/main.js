@@ -8,4 +8,4 @@ new Vue({
   template: '<App/>'
   // render: (h) => h(App)
 });
-console.log('aaa');
+console.log('aaaas');

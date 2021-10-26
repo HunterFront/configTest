@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    vue app of mine112333wew testfdf ggg mmmff aaa bbb ccc
+    vue app of mine112333wew testfdf ggg mmmff aaa bbb ccc gggg ds hunter
     <comp />
     <comp2 />
   </div>
@@ -13,6 +13,11 @@ import { util1, util2 } from './utils.js';
 export default {
   name: 'App',
   created() {
+    if (process.env.NODE_ENV == 'production') {
+      throw new Error('production');
+    } else {
+      throw new Error(testDefine.a);
+    }
     util2();
   },
   components: {

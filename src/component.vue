@@ -1,6 +1,6 @@
 <template>
   <div class="comp">
-    my component haha change fdf dfdfdfdf gfgfgf ss wu comp
+    my component haha change fdf dfdfdfdf gfgfgf ss wu compf
   </div>
 </template>
 <script>
@@ -53,5 +53,8 @@ export default {
 <style lang="scss" scoped>
 .comp {
   color: blue;
+  width: 200px;
+  height: 200px;
+  background-image: url('./image/tip-icon2.png');
 }
 </style>

@@ -16,7 +16,7 @@ module.exports = {
   entry: ['./src/main.js', './src/my.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: '[name]_[contenthash:8].bundle.js'
   },
   watchOptions: {
     // 不监听的 node_modules 目录下的文件
@@ -43,17 +43,25 @@ module.exports = {
   module: {
     rules: [
       { test: /\.txt$/, use: 'raw-loader' },
-      // { test: /\.css$/i, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        // use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '//css.cdn.com/id/'
+            }
+          },
+          'css-loader'
+        ]
       },
       {
         test: /\.s[ac]ss$/i,
         exclude: /node_modules/,
-        // use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        // use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.vue$/,
@@ -96,7 +104,7 @@ module.exports = {
         outputPath: 'auto'
       }
     ]),
-    // new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     // new ESLintPlugin({

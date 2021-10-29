@@ -14,10 +14,14 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 module.exports = {
   context: path.resolve(),
   mode: 'development',
-  entry: ['./src/main.js'],
+  entry: {
+    base: ['./src/base.js'],
+    index: ['./src/index.js'],
+    page1: ['./src/page1.js']
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name]_[contenthash:8].bundle.js'
+    filename: '[name]_[contenthash:8].js'
     // 指定存放 JavaScript 文件的 CDN 目录 URL
     // publicPath: '//cdn1.com/id/'
   },
@@ -104,41 +108,45 @@ module.exports = {
     new DefinePlugin({}),
 
     new HtmlWebpackPlugin({
-      template: './src/pages/index.html'
+      filename: 'index.html',
+      template: './src/pages/index.html',
+      chunks: ['base', 'index']
     }),
-    // new HtmlWebpackPlugin({
-    //   template: './src/pages/page1.html'
-    // }),
+    new HtmlWebpackPlugin({
+      filename: 'page1.html',
+      template: './src/pages/page1.html',
+      chunks: ['base', 'page1']
+    }),
 
-    new AddAssetHtmlPlugin([
-      // Glob to match all of the dll file
-      {
-        filepath: path.resolve(__dirname, './dll/*.dll.js'),
-        outputPath: 'auto'
-      }
-    ]),
+    // new AddAssetHtmlPlugin([
+    //   // Glob to match all of the dll file
+    //   {
+    //     filepath: path.resolve(__dirname, './dll/*.dll.js'),
+    //     outputPath: 'auto'
+    //   }
+    // ]),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[name].[contenthash].css'
     }),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
     // new ESLintPlugin({
     //   extensions: ['js', 'vue', 'ts']
     // })
-    // 告诉 Webpack 使用了哪些动态链接库
-    new DllReferencePlugin({
-      // 描述 react 动态链接库的文件内容
-      manifest: require('./dll/vue.manifest.json')
-    }),
-    new DllReferencePlugin({
-      // 描述 polyfill 动态链接库的文件内容
-      manifest: require('./dll/polyfill.manifest.json')
-    }),
-    new DllReferencePlugin({
-      // 描述 polyfill 动态链接库的文件内容
-      manifest: require('./dll/vueclass.manifest.json')
-    })
+    // // 告诉 Webpack 使用了哪些动态链接库
+    // new DllReferencePlugin({
+    //   // 描述 react 动态链接库的文件内容
+    //   manifest: require('./dll/vue.manifest.json')
+    // }),
+    // new DllReferencePlugin({
+    //   // 描述 polyfill 动态链接库的文件内容
+    //   manifest: require('./dll/polyfill.manifest.json')
+    // }),
+    // new DllReferencePlugin({
+    //   // 描述 polyfill 动态链接库的文件内容
+    //   manifest: require('./dll/vueclass.manifest.json')
+    // })
     // 使用 ParallelUglifyPlugin 并行压缩输出的 JS 代码
     // new ParallelUglifyPlugin({
     //   // 传递给 UglifyJS 的参数

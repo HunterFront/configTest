@@ -10,6 +10,8 @@ const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   context: path.resolve(),
@@ -131,7 +133,8 @@ module.exports = {
       chunkFilename: '[name].[contenthash].css'
     }),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' })
     // new ESLintPlugin({
     //   extensions: ['js', 'vue', 'ts']
     // })

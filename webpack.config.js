@@ -21,9 +21,10 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name]_[contenthash:8].js'
+    filename: '[name]_[contenthash:8].js',
     // 指定存放 JavaScript 文件的 CDN 目录 URL
     // publicPath: '//cdn1.com/id/'
+    chunkFilename: '[name]_[contenthash:8].js'
   },
   watchOptions: {
     // 不监听的 node_modules 目录下的文件

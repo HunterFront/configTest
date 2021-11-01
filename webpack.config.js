@@ -12,6 +12,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
 
 module.exports = {
   context: path.resolve(),
@@ -48,7 +49,9 @@ module.exports = {
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js'
-    }
+    },
+    // 针对 Npm 中的第三方模块优先采用 jsnext:main 中指向的 ES6 模块化语法的文件
+    mainFields: ['module', 'browser', 'main']
   },
   module: {
     rules: [
@@ -134,7 +137,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
-    new BundleAnalyzerPlugin({ analyzerMode: 'static' })
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+    // 开启 Scope Hoisting
+    new ModuleConcatenationPlugin()
     // new ESLintPlugin({
     //   extensions: ['js', 'vue', 'ts']
     // })
@@ -175,5 +180,9 @@ module.exports = {
     // })
   ],
   target: ['web', 'es5'],
-  devtool: false
+  devtool: false,
+  stats: {
+    // Display bailout reasons
+    optimizationBailout: true
+  }
 };

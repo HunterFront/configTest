@@ -13,6 +13,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ModuleConcatenationPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
+const WhtPlugin = require('wht-plugin');
 
 module.exports = {
   context: path.resolve(),
@@ -88,7 +89,7 @@ module.exports = {
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        use: ['vue-loader']
+        use: ['wht-loader', 'vue-loader']
       },
       {
         test: /\.tsx?$/,
@@ -111,6 +112,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new WhtPlugin(),
     new DefinePlugin({}),
 
     new HtmlWebpackPlugin({

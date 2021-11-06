@@ -1,7 +1,7 @@
 <template>
   <div id="page1">
     page1
-    <div v-on:click="show">click here 12</div>
+    <div v-on:click="show">click here 123</div>
   </div>
 </template>
 

@@ -50,7 +50,7 @@
     "webpack-dev-server": "^4.3.1",
     "webpack-parallel-uglify-plugin": "^2.0.0",
     "wht-loader": "^1.0.0",
-    "wht-plugin": "^1.0.4"
+    "wht-plugin": "^1.0.9"
   },
   "lint-staged": {
     "*.{js,html,css}": [

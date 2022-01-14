@@ -10,7 +10,8 @@
         "useBuiltIns": "usage",
         "corejs": "3.6.5"
       }
-    ]
+    ],
+    "@vue/babel-preset-jsx"
   ],
   "plugins": [
     ["@babel/proposal-decorators", { "legacy": true }],
